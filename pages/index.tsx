@@ -29,16 +29,14 @@ export default function Home({ nft, setNFT, audio, setAudio }: Props) {
 
   useEffect(() => {
     // Audio URL
-    console.log(audioResult)
     fetch(audioResult).then(d => d.blob()).then(s => {
-      console.log(s)
       blobToBase64(s).then(s => setAudio(s))
     })
   }, [audioResult])
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-  })
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-[#FFDDEB] to-[#FFCCD5]">
