@@ -24,6 +24,7 @@ const Card = (props: Props) => {
   return (
     <div className='flex flex-col justify-center items-center'>
       <input
+        className='bg-white/35 p-2 rounded-xl focus:outline-0'
         value={props.receiver}
         placeholder="Receiver Address"
         onChange={(e) => props.setReceiver(e.target.value)}

@@ -108,7 +108,7 @@ const Detail = (props: Props) => {
           {props.title}
         </div>
         <div className="text-gabriola mb-10 text-3xl text-[#C24B66]">
-          Your Gifts will be sent on 12 AM IST, 14th Feburary, they will know
+          Your Gifts will be sent on 12 AM IST, 15th Feburary, they will know
           who sent it and all the details associated with it, every NFT will be
           directly minted to their wallet address which can be viewed from
           opensea or rarible
