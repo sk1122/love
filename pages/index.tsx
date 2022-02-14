@@ -62,7 +62,7 @@ export default function Home({ nft, setNFT, audio, setAudio, name, setName, desc
         <meta property="og:url" content="https://onchainheartz.xyz" />
         <meta property="og:title" content="onchainheartz - From your Wallet to your valentines heart" />
         <meta property="og:description" content="Your Gifts will be sent on 12 AM IST, 15th Feburary, they will know who sent it and all the details associated with it, every NFT will be directly minted to their wallet address which can be viewed from opensea or rarible" />
-        <meta property="og:image" content="https://cdn.discordapp.com/attachments/942037163439169547/942448064889774130/FLerkkragAEV4ak.jpg" />
+        <meta property="og:image" content="https://i.imgur.com/JRQEYlw.jpeg" />
       </Head>
       <div
         className="flex flex-col items-center justify-center  py-2 pt-20
