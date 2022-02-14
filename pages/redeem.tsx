@@ -30,6 +30,12 @@ export default function Redeem({ name, setName, desc, setDesc, home, setHome, re
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-white via-[#FFDDEB] to-[#FFCCD5]">
+      <Head>
+        <title>
+          redeem - onchainheartz
+        </title>
+        <link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/1492844146465599488/lcpIKQSH_400x400.jpg" type="image/x-icon" />
+      </Head>
       <Detail
           title="Redeem your love here after 15th FEB"
           button="REDEEM A NFT"

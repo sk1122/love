@@ -58,6 +58,7 @@ export default function Home({ nft, setNFT, audio, setAudio, name, setName, desc
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-white via-[#FFDDEB] to-[#FFCCD5]">
       <Head>
         <title>onchainheart</title>
+        <link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/1492844146465599488/lcpIKQSH_400x400.jpg" type="image/x-icon" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@sk1122_" />
         <meta name="twitter:creator" content="@sk1122_" />
