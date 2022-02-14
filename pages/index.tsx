@@ -23,6 +23,8 @@ interface Props {
   receiver: string
   setReceiver: Function
   notify: Function
+  value: string
+  setValue: Function
 }
 
 function blobToBase64(blob: any) {
@@ -35,7 +37,7 @@ function blobToBase64(blob: any) {
   })
 }
 
-export default function Home({ nft, setNFT, audio, setAudio, name, setName, desc, setDesc, home, setHome, receiver, setReceiver, notify }: Props) {
+export default function Home({ nft, setNFT, audio, setAudio, name, setName, desc, setDesc, home, setHome, receiver, setReceiver, notify, value, setValue }: Props) {
   const { audioResult, timer, startRecording, stopRecording, status } =
     useAudioRecorder()
 
@@ -79,10 +81,11 @@ your valentines heart"
           name={name} 
           message={desc} 
           receiver={receiver}
+          value={value}
         />
         <div className="mt-20 flex w-full justify-center xl:mt-0">
           {setHome(true)}
-          <Card isHome={home} name={name} setName={setName} desc={desc} setDesc={setDesc} receiver={receiver} setReceiver={setReceiver} />
+          <Card isHome={home} name={name} setName={setName} desc={desc} setDesc={setDesc} receiver={receiver} setReceiver={setReceiver} value={value} setValue={setValue} />
         </div>
       </div>
       {/* recording section */}

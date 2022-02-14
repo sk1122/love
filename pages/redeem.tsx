@@ -16,9 +16,11 @@ interface Props {
   setHome: Function
   receiver: string
   setReceiver: Function
+  value: string
+  setValue: Function
 }
 
-export default function Redeem({ name, setName, desc, setDesc, home, setHome, receiver, setReceiver }: Props) {
+export default function Redeem({ name, setName, desc, setDesc, home, setHome, receiver, setReceiver, value, setValue }: Props) {
   const { audioResult, timer, startRecording, stopRecording, status } =
     useAudioRecorder()
 
@@ -45,10 +47,11 @@ export default function Redeem({ name, setName, desc, setDesc, home, setHome, re
           name={name} 
           message={desc} 
           receiver={receiver}
+          value={value}
         />
         <div className="mt-20 flex w-full justify-center xl:mt-0">
           {setHome(false)}
-          <Card isHome={home} name={name} setName={setName} desc={desc} setDesc={setDesc} receiver={receiver} setReceiver={setReceiver} />
+          <Card isHome={home} name={name} setName={setName} desc={desc} setDesc={setDesc} receiver={receiver} setReceiver={setReceiver} value={value} setValue={setValue} />
         </div>
       </div>
     </div>

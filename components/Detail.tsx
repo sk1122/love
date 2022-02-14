@@ -22,6 +22,7 @@ type Props = {
   receiver: string
   name: string
   message: string
+  value: string
 }
 
 const Detail = (props: Props) => {
@@ -73,11 +74,11 @@ const Detail = (props: Props) => {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
   
-      let txn1 = await contract.mint(props.receiver, props.name, props.message, {value: ethers.utils.parseEther('0.2')});
+      let txn1 = await contract.mint(props.receiver, props.name, props.message, {value: ethers.utils.parseEther(props.value)});
       let wait = await txn1.wait();
       toast.success('Minted NFT to ' + props.receiver)
-    } catch (e) {
-      toast.error('Cannot Mint NFT, check receiver address once, NO ENS ALLOWED')
+    } catch (e: any) {
+      toast.error(e.message)
     }
   }
 
@@ -92,8 +93,8 @@ const Detail = (props: Props) => {
       let wait = await txn1.wait();
 
       toast.success('Redeemed NFT, check on Opensea')
-    } catch (e) {
-      toast.error('NFT not Found')  
+    } catch (e: any) {
+      toast.error(e.data.message)  
     }
   }
 

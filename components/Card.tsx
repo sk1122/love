@@ -8,6 +8,8 @@ type Props = {
   setDesc: Function
   receiver: string
   setReceiver: Function
+  value: string
+  setValue: Function
 }
 
 const Card = (props: Props) => {
@@ -23,12 +25,6 @@ const Card = (props: Props) => {
   
   return (
     <div className='flex flex-col justify-center items-center'>
-      <input
-        className='bg-white/35 p-2 rounded-xl focus:outline-0'
-        value={props.receiver}
-        placeholder="Receiver Address"
-        onChange={(e) => props.setReceiver(e.target.value)}
-      ></input>
       <p>Double Click to enter your message</p>
       <svg ref={nft} style={{ height: '584px', width: '581px' }}>
         <image
@@ -88,6 +84,20 @@ const Card = (props: Props) => {
           </foreignObject>
         </switch>
       </svg>
+      <div className="flex justify-between space-x-3">
+        <input
+          className='bg-white/35 p-2 rounded-xl focus:outline-0'
+          value={props.receiver}
+          placeholder="Receiver Address"
+          onChange={(e) => props.setReceiver(e.target.value)}
+        ></input>
+        <input
+          className='bg-white/35 p-2 rounded-xl focus:outline-0'
+          value={props.value}
+          placeholder="MATIC you wanna gift them"
+          onChange={(e) => props.setValue(e.target.value)}
+        ></input>
+      </div>
     </div>
   )
 }
