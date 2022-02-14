@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import abi from '../abi.json'
 import { toast } from 'react-toastify'
 
-const CONTRACT_ADDRESS = "0xd35C9f875d09db34f14Eb93cA5A6257d5056abEa"
+const CONTRACT_ADDRESS = "0x77848747CF7aE80310b081CB4926e52270E0baA5"
 
 const supabase = createClient(
 	'https://jetiljetyojmgdcmehxy.supabase.co/',
@@ -35,7 +35,6 @@ const Detail = (props: Props) => {
         song: props.audio
       }
       await mint()
-      console.log('1', data)
       await supabase.from('songs').insert([data])
     } else {
       toast.error("Enter Valentine's Address")
@@ -105,19 +104,19 @@ const Detail = (props: Props) => {
   return (
     <div className="flex w-full flex-col items-center">
       <div className="mx-10 md:ml-20">
-        <div className="text-gabriola mb-4 text-4xl text-[#C24B66]">
+        <div className="text-gabriola mb-4 w-11/12 md:w-full text-4xl text-[#C24B66]">
           GIFT YOUR LOVED ONE A LOVELY NFT ON THIS VALENTINE
         </div>
-        <div className="text-gabriola mb-4 text-8xl text-[#912235]">
+        <div className="text-gabriola mb-4 w-11/12 md:w-full text-5xl md:text-8xl text-[#912235]">
           {props.title}
         </div>
-        <div className="text-gabriola mb-10 text-3xl text-[#C24B66]">
+        <div className="text-gabriola mb-10 w-11/12 md:w-full text-xl md:text-3xl text-[#C24B66]">
           Your Gifts will be sent on 12 AM IST, 15th Feburary, they will know
           who sent it and all the details associated with it, every NFT will be
           directly minted to their wallet address which can be viewed from
           opensea or rarible
         </div>
-        <div className="flex space-x-4">
+        <div className="flex flex-col md:flex-row space-y-5 md:space-x-4">
           <button onClick={() => props.button === "GIFT A NFT" ? giftNFT() : toast.info('You can mint after 15th FEB')} className="text-gabriola cursor-pointer rounded-xl bg-[#912235] py-4 px-8 text-lg text-white">
             {props.button}
           </button>

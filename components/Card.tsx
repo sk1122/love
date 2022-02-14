@@ -26,7 +26,7 @@ const Card = (props: Props) => {
   return (
     <div className='flex flex-col justify-center items-center'>
       <p>Double Click to enter your message</p>
-      <svg ref={nft} style={{ height: '584px', width: '581px' }}>
+      <svg ref={nft} className="w-[200px] h-[200px] md:w-[584px] md:h-[584px]">
         <image
           href="https://cdn.discordapp.com/attachments/941786627108388904/941789852180037712/NFT_no_.png"
           height="100%"
@@ -38,7 +38,7 @@ const Card = (props: Props) => {
             y="15%"
             width="65%"
             height="60"
-            style={{ fontSize: '30px' }}
+            className='text-xl md:text-3xl'
           >
             {toggleName ? (
               <p
@@ -62,11 +62,12 @@ const Card = (props: Props) => {
           </foreignObject>
         </switch>
         <switch>
-          <foreignObject x="19%" y="25%" width="65%" height="200">
+          <foreignObject x="19%" y="40%" width="65%" height="200">
             {toggle ? (
               <p
                 onDoubleClick={() => setToggle(false)}
-                style={{ textAlign: 'center', fontWeight: 'bolder', background: 'transparent', border: 'none', width: '100%', color: 'white', outline: 'none', fontFamily: 'gabriola', fontSize: '1.5rem' }}
+                style={{ textAlign: 'center', fontWeight: 'bolder', background: 'transparent', border: 'none', width: '100%', color: 'white', outline: 'none', fontFamily: 'gabriola' }}
+                className='text-md md:text-3xl'
               >
                 {props.desc}
               </p>
@@ -84,7 +85,7 @@ const Card = (props: Props) => {
           </foreignObject>
         </switch>
       </svg>
-      <div className="flex justify-between space-x-3">
+      <div className="flex justify-between flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-4">
         <input
           className='bg-white/35 p-2 rounded-xl focus:outline-0'
           value={props.receiver}
