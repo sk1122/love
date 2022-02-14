@@ -4,12 +4,25 @@ import Detail from '../components/Detail'
 import Card from '../components/Card'
 import { useAudioRecorder } from '@sarafhbk/react-audio-recorder'
 import { useEffect } from 'react'
+import { ToastContainer, toast } from "react-toastify";
+// import toast from "../components/Toast";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 interface Props {
   nft: any
   setNFT: any
   audio: string
   setAudio: Function
+  name: string
+  setName: Function
+  desc: string
+  setDesc: Function
+  home: boolean
+  setHome: Function
+  receiver: string
+  setReceiver: Function
+  notify: Function
 }
 
 function blobToBase64(blob: any) {
@@ -22,7 +35,7 @@ function blobToBase64(blob: any) {
   })
 }
 
-export default function Home({ nft, setNFT, audio, setAudio }: Props) {
+export default function Home({ nft, setNFT, audio, setAudio, name, setName, desc, setDesc, home, setHome, receiver, setReceiver, notify }: Props) {
   const { audioResult, timer, startRecording, stopRecording, status } =
     useAudioRecorder()
 
@@ -35,6 +48,8 @@ export default function Home({ nft, setNFT, audio, setAudio }: Props) {
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+    toast.configure();
+
   }, [])
 
   return (
@@ -42,7 +57,6 @@ export default function Home({ nft, setNFT, audio, setAudio }: Props) {
       <Head>
         <title>onchainheart</title>
       </Head>
-
       <div
         className="flex flex-col items-center justify-center  py-2 pt-20
     xl:flex-row xl:pt-0"
@@ -55,9 +69,13 @@ your valentines heart"
           button_href="/"
           button2_href="/redeem"
           audio={audio}
+          name={name} 
+          message={desc} 
+          receiver={receiver}
         />
         <div className="mt-20 flex w-full justify-center xl:mt-0">
-          <Card isHome={true} />
+          {setHome(true)}
+          <Card isHome={home} name={name} setName={setName} desc={desc} setDesc={setDesc} receiver={receiver} setReceiver={setReceiver} />
         </div>
       </div>
       {/* recording section */}

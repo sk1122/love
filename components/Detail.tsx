@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@supabase/supabase-js'
+import { ethers } from 'ethers'
+import abi from '../abi.json'
+import { toast } from 'react-toastify'
+
+const CONTRACT_ADDRESS = "0xd35C9f875d09db34f14Eb93cA5A6257d5056abEa"
 
 const supabase = createClient(
 	'https://jetiljetyojmgdcmehxy.supabase.co/',
@@ -14,21 +19,84 @@ type Props = {
   button_href: string
   button2_href: string
   audio: string
+  receiver: string
+  name: string
+  message: string
 }
 
 const Detail = (props: Props) => {
+  const [account, setAccount] = useState('')
   const giftNFT = async () => {
     console.log(props.audio)
     const data = {
-      address: '0x00000', // change address to owner
+      address: props.receiver, // change address to owner
       song: props.audio
     }
+    
+    await mint()
+    
     await supabase.from('songs').insert([data])
   }
 
   const redeemNFT = () => {
-    
+    redeem()
   }
+
+  async function connectWallet() {
+    try {
+			const { ethereum } = window;
+		
+			if (ethereum) {
+				const accounts = await ethereum.request({
+					method: "eth_requestAccounts",
+				});
+		
+				if (accounts.length !== 0) {
+					console.log(accounts)
+					setAccount(accounts[0])
+					console.log("Found");
+				} else {
+					console.log("Not Found");
+				}
+			} else {
+				console.log("Install Metamask");
+			}
+		} catch (e) {
+			console.log(e);
+		}
+  }
+
+  async function mint() {
+    try {
+      connectWallet()
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
+  
+      let txn1 = await contract.mint(props.receiver, props.name, props.message, {value: ethers.utils.parseEther('0.2')});
+      let wait = await txn1.wait();
+      toast.success('Minted NFT to ' + props.receiver)
+    } catch (e) {
+      toast.error('Cannot Mint NFT, check receiver address once, NO ENS ALLOWED')
+    }
+  }
+
+  async function redeem() {
+    try {
+      connectWallet()
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, signer);
+  
+      let txn1 = await contract.redeem();
+      let wait = await txn1.wait();
+
+      toast.success('Redeemed NFT, check on Opensea')
+    } catch (e) {
+      toast.error('NFT not Found')  
+    }
+  }
+
 
   return (
     <div className="flex w-full flex-col items-center">

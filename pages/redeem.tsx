@@ -7,7 +7,18 @@ import { useEffect } from 'react'
 
 // var videoshow = require('videoshow')
 
-export default function Home() {
+interface Props {
+  name: string
+  setName: Function
+  desc: string
+  setDesc: Function
+  home: boolean
+  setHome: Function
+  receiver: string
+  setReceiver: Function
+}
+
+export default function Redeem({ name, setName, desc, setDesc, home, setHome, receiver, setReceiver }: Props) {
   const { audioResult, timer, startRecording, stopRecording, status } =
     useAudioRecorder()
 
@@ -31,9 +42,13 @@ export default function Home() {
           button_href="/redeem"
           button2_href="/"
           audio=""
+          name={name} 
+          message={desc} 
+          receiver={receiver}
         />
         <div className="mt-20 flex w-full justify-center xl:mt-0">
-          <Card isHome={false} />
+          {setHome(false)}
+          <Card isHome={home} name={name} setName={setName} desc={desc} setDesc={setDesc} receiver={receiver} setReceiver={setReceiver} />
         </div>
       </div>
     </div>
