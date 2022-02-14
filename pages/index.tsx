@@ -53,7 +53,7 @@ export default function Home({ nft, setNFT, audio, setAudio, name, setName, desc
   }, [])
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-[#FFDDEB] to-[#FFCCD5]">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-white via-[#FFDDEB] to-[#FFCCD5]">
       <Head>
         <title>onchainheart</title>
       </Head>
