@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import abi from '../abi.json'
 import { toast } from 'react-toastify'
 
-const CONTRACT_ADDRESS = "0xd35C9f875d09db34f14Eb93cA5A6257d5056abEa"
+const CONTRACT_ADDRESS = "0x77848747CF7aE80310b081CB4926e52270E0baA5"
 
 const supabase = createClient(
 	'https://jetiljetyojmgdcmehxy.supabase.co/',
