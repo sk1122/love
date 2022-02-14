@@ -29,7 +29,7 @@ const Detail = (props: Props) => {
   const [account, setAccount] = useState('')
   const giftNFT = async () => {
     console.log(props.audio)
-    if(props.receiver !== '') {
+    if(props.receiver !== '' && !props.audio.startsWith('data:text/html')) {
       var data = {
         address: props.receiver, // change address to owner
         song: props.audio
@@ -37,7 +37,8 @@ const Detail = (props: Props) => {
       await mint()
       await supabase.from('songs').insert([data])
     } else {
-      toast.error("Enter Valentine's Address")
+      if(props.receiver === '') toast.error("Enter Valentine's Address")
+      else toast.error('Record Audio')
     }
   }
 
@@ -116,7 +117,7 @@ const Detail = (props: Props) => {
           directly minted to their wallet address which can be viewed from
           opensea or rarible
         </div>
-        <div className="flex flex-col md:flex-row space-y-5 md:space-x-4">
+        <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-4">
           <button onClick={() => props.button === "GIFT A NFT" ? giftNFT() : toast.info('You can mint after 15th FEB')} className="text-gabriola cursor-pointer rounded-xl bg-[#912235] py-4 px-8 text-lg text-white">
             {props.button}
           </button>
