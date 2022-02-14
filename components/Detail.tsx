@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import abi from '../abi.json'
 import { toast } from 'react-toastify'
 
-const CONTRACT_ADDRESS = "0x77848747CF7aE80310b081CB4926e52270E0baA5"
+const CONTRACT_ADDRESS = "0xd35C9f875d09db34f14Eb93cA5A6257d5056abEa"
 
 const supabase = createClient(
 	'https://jetiljetyojmgdcmehxy.supabase.co/',
@@ -29,14 +29,17 @@ const Detail = (props: Props) => {
   const [account, setAccount] = useState('')
   const giftNFT = async () => {
     console.log(props.audio)
-    const data = {
-      address: props.receiver, // change address to owner
-      song: props.audio
+    if(props.receiver !== '') {
+      var data = {
+        address: props.receiver, // change address to owner
+        song: props.audio
+      }
+      await mint()
+      console.log('1', data)
+      await supabase.from('songs').insert([data])
+    } else {
+      toast.error("Enter Valentine's Address")
     }
-    
-    await mint()
-    
-    await supabase.from('songs').insert([data])
   }
 
   const redeemNFT = () => {
