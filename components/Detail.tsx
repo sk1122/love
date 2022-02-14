@@ -115,7 +115,7 @@ const Detail = (props: Props) => {
           opensea or rarible
         </div>
         <div className="flex space-x-4">
-          <button onClick={() => props.button === "GIFT A NFT" ? giftNFT() : redeemNFT()} className="text-gabriola cursor-pointer rounded-xl bg-[#912235] py-4 px-8 text-lg text-white">
+          <button onClick={() => props.button === "GIFT A NFT" ? giftNFT() : toast.info('You can mint after 15th FEB')} className="text-gabriola cursor-pointer rounded-xl bg-[#912235] py-4 px-8 text-lg text-white">
             {props.button}
           </button>
           <Link href={props.button2_href}>
